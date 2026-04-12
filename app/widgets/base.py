@@ -5,9 +5,14 @@ class WidgetDescriptor:
     property_schema: list[dict] = []
 
     @classmethod
+    def transform_properties(cls, properties: dict) -> dict:
+        return dict(properties)
+
+    @classmethod
     def create_widget(cls, master, properties: dict):
         raise NotImplementedError
 
     @classmethod
     def update_widget(cls, widget, prop_name: str, value) -> None:
-        widget.configure(**{prop_name: value})
+        transformed = cls.transform_properties({prop_name: value})
+        widget.configure(**transformed)

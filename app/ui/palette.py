@@ -27,8 +27,6 @@ class Palette(ctk.CTkFrame):
         node = WidgetNode(
             widget_type=descriptor.type_name,
             properties=dict(descriptor.default_properties),
-            x=120,
-            y=120,
         )
         self.project.add_widget(node)
         self.project.select_widget(node.id)
